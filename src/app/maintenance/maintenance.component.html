@@ -1,0 +1,130 @@
+<mat-tab-group>
+    <mat-tab label="Maintenance planner" class="margin">
+        <div class="calendar-container">
+            <!-- Inside your HTML template -->
+            <button class="add-button" (click)="handleEditAction()">
+                <mat-icon>add</mat-icon>
+            </button>
+
+            <div id="cal-buttons">
+                <div id="cal-date-nav-buttons">
+                        <button mat-button id="previous" mwlCalendarPreviousView [(viewDate)]="viewDate" [view]="view" [excludeDays]="[0,6]">
+                            <mat-icon>arrow_back</mat-icon>
+                        </button>
+
+                        <button mat-button id="today" mwlCalendarToday [(viewDate)]="viewDate">
+                            Today
+                        </button>
+
+                        <button mat-button id="next" mwlCalendarNextView [(viewDate)]="viewDate" [view]="view" [excludeDays]="[0,6]">
+                            <mat-icon>arrow_forward</mat-icon>
+                        </button>
+                </div>
+                
+                <div id="cal-date-field">{{ viewDate | calendarDate: (view + 'ViewTitle') : 'en' }}</div>
+                <div id="cal-view-nav-buttons">
+                    <button id="month" (click)="setView(CalendarView.Month)">Month</button>
+                    <button id="week" (click)="setView(CalendarView.Week)">Week</button>
+                    <button id="day" (click)="setView(CalendarView.Day)">Day</button>
+                </div>
+            </div>
+            <span [ngSwitch]="view">
+                <mwl-calendar-month-view
+                    *ngSwitchCase="CalendarView.Month"
+                    [viewDate]="viewDate"
+                    [events]="events"
+                    [excludeDays]="[0,6]"
+                    [refresh]="refresh"
+                    [activeDayIsOpen]="activeDayIsOpen"
+                    (dayClicked)="dayClicked($event.day)"
+                    (eventClicked)="eventClicked($event)"
+                    (eventTimesChanged)="eventTimeChanged($event)"
+                    ></mwl-calendar-month-view>
+                <mwl-calendar-week-view 
+                    *ngSwitchCase="CalendarView.Week"  
+                    [viewDate]="viewDate" 
+                    [events]="events"
+                    [refresh]="refresh"
+                    [excludeDays]="[0,6]"
+                    [dayStartHour]="9"
+                    [dayEndHour]="18"
+                    (eventClicked)="eventClicked($event)"
+                    (eventTimesChanged)="eventTimeChanged($event)"
+                    ></mwl-calendar-week-view>
+                <mwl-calendar-day-view 
+                    *ngSwitchCase="CalendarView.Day"  
+                    [viewDate]="viewDate" 
+                    [events]="events"
+                    [dayStartHour]="9"
+                    [refresh]="refresh"
+                    [dayEndHour]="18"
+                    (eventClicked)="eventClicked($event)"
+                    (eventTimesChanged)="eventTimeChanged($event)"
+                    ></mwl-calendar-day-view>
+            </span>
+        </div>
+    </mat-tab>
+
+    <mat-tab label="History">
+
+        <mat-card class="margin">
+            <mat-card-content>
+                <form>
+                    <mat-form-field class="form-field">
+                        <mat-label>Recherche</mat-label>
+                        <input matInput (keyup)="applyFilter($event)" placeholder="recherche"/>
+                    </mat-form-field>
+                </form>
+
+                <button mat-raised-button class="refresh-button" color="primary" type="submit" (click)="refreshTable()">
+                    <mat-icon>refresh</mat-icon> refresh
+                </button>
+
+            </mat-card-content>
+        </mat-card>
+
+        <mat-card class="margin">
+            <table class="mat-elevation-z8">
+                <thead>
+                    <tr>
+                        <th>Title</th>
+                        <th>Start</th>
+                        <th>End</th>
+                        <th>Description</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <ng-container *ngIf="filteredMaintenanceElements.length; else noData">
+                        <tr *ngFor="let element of filteredMaintenanceElements">
+                            <td>{{ element.title }}</td>
+                            <td>{{ element.start }}</td>
+                            <td>{{ element.end }}</td>
+                            <td>{{ element.description }}</td>
+                            <td>
+                                <button mat-icon-button class="color-delete" matTooltip="Delete" (click)="handleDeleteAction(element)">
+                                    <mat-icon>delete</mat-icon>
+                                </button>
+                            </td>
+                        </tr>
+                    </ng-container>
+                    <ng-template #noData>
+                        <tr *ngFor="let element of maintenanceElements">
+                            <td>{{ element.title }}</td>
+                            <td>{{ element.start }}</td>
+                            <td>{{ element.end }}</td>
+                            <td>{{ element.description }}</td>
+                            <td>
+                                <button mat-icon-button class="color-delete" matTooltip="Delete" (click)="handleDeleteAction(element)">
+                                    <mat-icon>delete</mat-icon>
+                                </button>
+                            </td>
+                        </tr>
+                    </ng-template>
+                </tbody>
+                
+            </table>
+        </mat-card>
+
+    </mat-tab>
+</mat-tab-group>

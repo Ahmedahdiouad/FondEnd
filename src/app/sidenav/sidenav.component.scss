@@ -1,0 +1,119 @@
+.logo{
+    @media only screen and (max-width: 600px) {
+        text-align: center;
+        padding: none;
+    }
+    text-align: center;
+    padding: 0.5rem 1rem;
+    img{
+        @media only screen and (max-width: 600px) {
+            width: 40px;
+            height: 40px;
+        }
+        width: 50px;
+        height: 80px;
+    }
+}
+
+.mat-divider {
+    /*display: none;*/
+}
+
+.list-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.back{
+    background-color: transparent;
+}
+
+.list-itemFor {
+    display: flex;
+    align-items: center;
+}
+
+.mat-icon {
+    /* Adjust the margin as needed */
+    margin-right: 8px;
+    vertical-align: middle;
+    margin-bottom: 8px;
+    margin-top: 5.5px;
+    color : rgb(0, 0, 0);
+}
+
+.text {
+    @media only screen and (max-width: 600px) {
+        display: none;
+    }
+    font-size: small;
+    vertical-align: middle;
+    color : rgb(0, 0, 0);
+}
+
+.container {
+    margin-right: 10px;
+    margin-bottom: 5px;
+    margin-top: 5px;
+    margin-left: 10px;
+    font-size: 0.8rem;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    &:hover{
+        background-color: #cad0db;
+    }
+}
+
+.containerPanel {
+    margin-right: 10px;
+    margin-bottom: 5px;
+    margin-top: 5px;
+    margin-left: 10px;
+    font-size: 0.8rem;
+    border-radius: 10px;
+    justify-content: center;
+    &:hover{
+        background-color: #cad0db;
+   }
+}
+
+.colorWhite{
+    color : white;
+}
+
+.active {
+    color : #f2f5f7;
+    background-color: #cad0db;
+    border-radius: 10px;
+}
+
+.mat-subheader {
+    color: #f2f5f7 !important;
+    font-size: 0.6rem !important;
+    font-weight: 100 !important;
+    letter-spacing: 1px !important;
+}
+
+.text {
+    flex: 1; /* Allow text to grow and take remaining space */
+}
+
+.end {
+    margin-left: auto; /* Push this element to the right */
+}
+
+.part0{
+    display: flex;
+    justify-content: space-between;
+}
+
+.version {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-weight: bold ;
+}

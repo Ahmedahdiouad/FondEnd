@@ -1,0 +1,79 @@
+<mat-toolbar class="menuColor">
+    <mat-toolbar-row fxLayout="row">
+        <span class="align">Add Maintenance</span>
+        <span class="spacer"></span>
+    </mat-toolbar-row>
+</mat-toolbar>
+
+<mat-dialog-content class="mat-typography">
+    <form [formGroup]="formGroup" >
+        <div fxFlex fxLayout="column">
+            <div fxFlex="row wrap">
+                <mat-form-field fxFlex>
+                    <mat-label>Title</mat-label>
+                    <input matInput formControlName="title"  placeholder="Title"/>
+                </mat-form-field>
+
+                <mat-form-field class="form-field">
+                    <mat-label>Select a machine</mat-label>
+                    <mat-select formControlName="machine">
+                    <mat-option *ngFor="let machine of machines" [value]="machine.id">
+                        {{ machine.name }}
+                    </mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+                <mat-form-field class="form-field">
+                    <mat-label>Select a maintenance type</mat-label>
+                    <mat-select formControlName="maintenanceType">
+                    <mat-option *ngFor="let mt of maintenanceTypes" [value]="mt.id">
+                        {{ mt.name }}
+                    </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+
+            <div fxFlex="row wrap">
+                <mat-form-field fxFlex>
+                    <mat-label>Start date</mat-label>
+                    <input matInput formControlName="startDate" [matDatepicker]="pickerStart" placeholder="startDate"/>
+                    <mat-datepicker-toggle matIconSuffix [for]="pickerStart"></mat-datepicker-toggle>
+                    <mat-datepicker #pickerStart></mat-datepicker>
+                </mat-form-field>
+
+                <mat-form-field fxFlex>
+                    <mat-label>End date</mat-label>
+                    <input formControlName="endDate" matInput [matDatepicker]="pickerEnd" placeholder="endDate" />
+                    <mat-datepicker-toggle matIconSuffix [for]="pickerEnd"></mat-datepicker-toggle>
+                    <mat-datepicker #pickerEnd></mat-datepicker>
+                    <ngx-timepicker [(ngModel)]="selectedEndTime"></ngx-timepicker>
+                </mat-form-field>
+            </div>
+
+            <div fxFlex="row wrap">
+                <mat-form-field fxFlex>
+                    <input matInput formControlName="startTime" [ngxTimepicker]="pickerTimeStart" placeholder="Start Time">
+                    <ngx-material-timepicker #pickerTimeStart></ngx-material-timepicker>
+                </mat-form-field>
+                <mat-form-field fxFlex>
+                    <input matInput formControlName="endTime" [ngxTimepicker]="pickerTimeEnd" placeholder="End Time">
+                    <ngx-material-timepicker #pickerTimeEnd></ngx-material-timepicker>
+                </mat-form-field>
+            </div>
+
+            <div fxFlex="row wrap">
+                <mat-form-field fxFlex>
+                    <mat-label>Description</mat-label>
+                    <input matInput formControlName="description" placeholder="Description">
+                </mat-form-field>
+            </div>
+            
+        </div>
+    </form>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+    <button mat-raised-button type="submit" class="buttonColor" (click)="addMaintenance()">
+        <mat-icon class="white">save</mat-icon> <span class="white">Add</span>
+    </button>
+</mat-dialog-actions>

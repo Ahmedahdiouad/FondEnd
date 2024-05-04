@@ -1,0 +1,972 @@
+<mat-tab-group>
+    
+
+    <mat-tab label="Machine 1">
+        <div class="margin">
+            <!-- Une seule ligne et 3 colonnes -->
+            <div fxLayout="row" fxLayout.xs="column" fxLayoutGap="10px" class="mgb15">
+                <!-- Premiere colonne pour le OEE -->
+                <div fxFlex="100" fxLayout="column" class="column">
+                    <mat-card class="height">
+                        <mat-card-header class="mgb15"><span>Overall Equipement Effectiveness</span></mat-card-header>
+                        <mat-divider></mat-divider>
+                        <div class="margin">
+                            <div class="spinner-wrapper mgt25">
+                                <mat-progress-spinner
+                                    class="custom-spinner"
+                                    [color]="colorAccent"
+                                    [mode]="mode"
+                                    [value]="oeePercentageMachine1">
+                                </mat-progress-spinner>
+                                <div class="spinner-value">{{ oeePercentageMachine1 }}%</div>
+                            </div>
+                        </div>
+                    </mat-card>
+                </div>
+            </div>
+
+            <div fxLayout="row" fxLayout.xs="column" fxLayoutGap="10px">
+                <!-- 2eme colonne pour les progresses -->
+                <div fxFlex="50" fxLayout="column" class="column">
+                    <!-- Quality -->
+                    <mat-card class="mgb15 height">
+                        <mat-card-header class="mgb15"><span>Quality</span></mat-card-header>
+                        <mat-divider></mat-divider>
+                        <div class="margin">
+                            <div class="spinner-wrapper mgt50">
+                                <mat-progress-spinner
+                                    class="custom-spinner"
+                                    [color]="colorPrimary"
+                                    [mode]="mode"
+                                    [value]="qualityPercentageMachine1">
+                                </mat-progress-spinner>
+                                <div class="spinner-value">{{ qualityPercentageMachine1 }}%</div>
+                            </div>
+                        </div>
+                    </mat-card>
+                    <!-- Performance -->
+                    <mat-card class="mgb15 height">
+                        <mat-card-header class="mgb15"><span>Performance</span></mat-card-header>
+                        <mat-divider></mat-divider>
+                        <div class="margin">
+                            <div class="spinner-wrapper mgt50">
+                                <mat-progress-spinner
+                                    class="custom-spinner"
+                                    [color]="colorPrimary"
+                                    [mode]="mode"
+                                    [value]="performancePercentageMachine1">
+                                </mat-progress-spinner>
+                                <div class="spinner-value">{{ performancePercentageMachine1 }}%</div>
+                            </div>
+                        </div>
+                    </mat-card>
+                    <!-- Availability -->
+                    <mat-card class="mgb15 height">
+                        <mat-card-header class="mgb15"><span>Availability</span></mat-card-header>
+                        <mat-divider></mat-divider>
+                        <div class="margin">
+                            <div class="margin">
+                                <div class="spinner-wrapper mgt50">
+                                    <mat-progress-spinner
+                                        class="custom-spinner"
+                                        [color]="colorPrimary"
+                                        [mode]="mode"
+                                        [value]="availabilityPercentageMachine1">
+                                    </mat-progress-spinner>
+                                    <div class="spinner-value">{{ availabilityPercentageMachine1 }}%</div>
+                                </div>
+                            </div>
+                        </div>
+                    </mat-card>
+                    <!-- Planned Time and running time -->
+                    <mat-card class="mgb15 height">
+                        <mat-card-header class="mgb15"><span>Running Time and Planned Time</span></mat-card-header>
+                        <mat-divider></mat-divider>
+                        <div class="margin">
+                            <div class="margin">
+                                <div class="spinner-wrapper mgt50">
+                                    <mat-progress-spinner
+                                        class="custom-spinner"
+                                        [color]="colorPrimary"
+                                        [mode]="mode"
+                                        [value]="dataRunningTimePercentageMachine1">
+                                    </mat-progress-spinner>
+                                    <div class="spinner-value">{{ dataRunningTimePercentageMachine1 }}%</div>
+                                </div>
+                            </div>
+                        </div>
+                    </mat-card>
+                </div>
+
+                <!-- 3eme colonnes pour les charts -->
+                <div fxFlex="50" fxLayout="column">
+                    <!-- Quality -->
+                    <mat-card class="mgb15 height">
+                        <mat-card-header class="mgb15"><span>Quality</span></mat-card-header>
+                        <mat-divider></mat-divider>
+                        <div class="margin">
+                            <canvas class="chart-container" id="chartQualityMachine1"></canvas>
+                        </div>
+                    </mat-card>
+
+                    <!-- Performance -->
+                    <mat-card class="mgb15 height">
+                        <mat-card-header class="mgb15"><span>Performance</span></mat-card-header>
+                        <mat-divider></mat-divider>
+                        <div class="margin">
+                            <canvas class="chart-container" id="chartPerformanceMachine1"></canvas>
+                        </div>
+                    </mat-card>
+
+                    <!-- Availability -->
+                    <mat-card class="mgb15 height">
+                        <mat-card-header class="mgb15"><span>Availability</span></mat-card-header>
+                        <mat-divider></mat-divider>
+                        <div class="margin">
+                            <canvas class="chart-container" id="chartAvailabilityMachine1"></canvas>
+                        </div>
+                    </mat-card>
+
+                    <!-- Plannification and running time -->
+                    <mat-card class="mgb15 height">
+                        <mat-card-header class="mgb15"><span>Running Time and Planned Time </span></mat-card-header>
+                        <mat-divider></mat-divider>
+                        <div class="margin">
+                            <canvas class="chart-container" id="chartRunningTimeMachine1"></canvas>
+                        </div>
+                    </mat-card>
+                </div>
+            </div>
+            <div fxLayout="row" fxLayout.xs="column" fxLayoutGap="10px" class="mgb15">
+                <div fxFlex="50" fxLayout="column">
+                    <!-- Total and Good Count -->
+                    <mat-card class="mgb15">
+                        <mat-card-header class="mgb15"><span>Total and Good Count </span></mat-card-header>
+                        <mat-divider></mat-divider>
+                        <div class="margin">
+                            <canvas class="chart-container" id="chartGoodMachine1"></canvas>
+                        </div>
+                    </mat-card>
+                </div>
+            </div>
+        </div>
+    </mat-tab>
+
+    <mat-tab label="Machine 2">
+        <div class="margin">
+            <!-- Une seule ligne et 3 colonnes -->
+            <div fxLayout="row" fxLayout.xs="column" fxLayoutGap="10px" class="mgb15">
+                <!-- Premiere colonne pour le OEE -->
+                <div fxFlex="100" fxLayout="column" class="column">
+                    <mat-card class="height">
+                        <mat-card-header class="mgb15"><span>Overall Equipement Effectiveness</span></mat-card-header>
+                        <mat-divider></mat-divider>
+                        <div class="margin">
+                            <div class="spinner-wrapper mgt25">
+                                <mat-progress-spinner
+                                    class="custom-spinner"
+                                    [color]="colorAccent"
+                                    [mode]="mode"
+                                    [value]="oeePercentageMachine2">
+                                </mat-progress-spinner>
+                                <div class="spinner-value">{{ oeePercentageMachine2 }}%</div>
+                            </div>
+                        </div>
+                    </mat-card>
+                </div>
+            </div>
+            <div fxLayout="row" fxLayout.xs="column" fxLayoutGap="10px">
+                <!-- 2eme colonne pour les progresses -->
+                <div fxFlex="50" fxLayout="column" class="column">
+                    <!-- Quality -->
+                    <mat-card class="mgb15 height">
+                        <mat-card-header class="mgb15"><span>Quality</span></mat-card-header>
+                        <mat-divider></mat-divider>
+                        <div class="margin">
+                            <div class="spinner-wrapper mgt50">
+                                <mat-progress-spinner
+                                    class="custom-spinner"
+                                    [color]="colorPrimary"
+                                    [mode]="mode"
+                                    [value]="qualityPercentageMachine2">
+                                </mat-progress-spinner>
+                                <div class="spinner-value">{{ qualityPercentageMachine2 }}%</div>
+                            </div>
+                        </div>
+                    </mat-card>
+                    <!-- Performance -->
+                    <mat-card class="mgb15 height">
+                        <mat-card-header class="mgb15"><span>Performance</span></mat-card-header>
+                        <mat-divider></mat-divider>
+                        <div class="margin">
+                            <div class="spinner-wrapper mgt50">
+                                <mat-progress-spinner
+                                    class="custom-spinner"
+                                    [color]="colorPrimary"
+                                    [mode]="mode"
+                                    [value]="performancePercentageMachine2">
+                                </mat-progress-spinner>
+                                <div class="spinner-value">{{ performancePercentageMachine2 }}%</div>
+                            </div>
+                        </div>
+                    </mat-card>
+                    <!-- Availability -->
+                    <mat-card class="mgb15 height">
+                        <mat-card-header class="mgb15"><span>Availability</span></mat-card-header>
+                        <mat-divider></mat-divider>
+                        <div class="margin">
+                            <div class="margin">
+                                <div class="spinner-wrapper mgt50">
+                                    <mat-progress-spinner
+                                        class="custom-spinner"
+                                        [color]="colorPrimary"
+                                        [mode]="mode"
+                                        [value]="availabilityPercentageMachine2">
+                                    </mat-progress-spinner>
+                                    <div class="spinner-value">{{ availabilityPercentageMachine2 }}%</div>
+                                </div>
+                            </div>
+                        </div>
+                    </mat-card>
+                    <!-- Planned Time and running time -->
+                    <mat-card class="mgb15 height">
+                        <mat-card-header class="mgb15"><span>Running Time and Planned Time</span></mat-card-header>
+                        <mat-divider></mat-divider>
+                        <div class="margin">
+                            <div class="margin">
+                                <div class="spinner-wrapper mgt50">
+                                    <mat-progress-spinner
+                                        class="custom-spinner"
+                                        [color]="colorPrimary"
+                                        [mode]="mode"
+                                        [value]="dataRunningTimePercentageMachine2">
+                                    </mat-progress-spinner>
+                                    <div class="spinner-value">{{ dataRunningTimePercentageMachine2 }}%</div>
+                                </div>
+                            </div>
+                        </div>
+                    </mat-card>
+                </div>
+
+                <!-- 3eme colonnes pour les charts -->
+                <div fxFlex="50" fxLayout="column">
+                    <!-- Quality -->
+                    <mat-card class="mgb15 height">
+                        <mat-card-header class="mgb15"><span>Quality</span></mat-card-header>
+                        <mat-divider></mat-divider>
+                        <div class="margin">
+                            <canvas class="chart-container" id="chartQualityMachine2"></canvas>
+                        </div>
+                    </mat-card>
+
+                    <!-- Performance -->
+                    <mat-card class="mgb15 height">
+                        <mat-card-header class="mgb15"><span>Performance</span></mat-card-header>
+                        <mat-divider></mat-divider>
+                        <div class="margin">
+                            <canvas class="chart-container" id="chartPerformanceMachine2"></canvas>
+                        </div>
+                    </mat-card>
+
+                    <!-- Availability -->
+                    <mat-card class="mgb15 height">
+                        <mat-card-header class="mgb15"><span>Availability</span></mat-card-header>
+                        <mat-divider></mat-divider>
+                        <div class="margin">
+                            <canvas class="chart-container" id="chartAvailabilityMachine2"></canvas>
+                        </div>
+                    </mat-card>
+
+                    <!-- Plannification and running time -->
+                    <mat-card class="mgb15 height">
+                        <mat-card-header class="mgb15"><span>Running Time and Planned Time </span></mat-card-header>
+                        <mat-divider></mat-divider>
+                        <div class="margin">
+                            <canvas class="chart-container" id="chartRunningTimeMachine2"></canvas>
+                        </div>
+                    </mat-card>
+                </div>
+            </div>
+            <div fxLayout="row" fxLayout.xs="column" fxLayoutGap="10px" class="mgb15">
+                <div fxFlex="50" fxLayout="column">
+                    <!-- Total and Good Count -->
+                    <mat-card class="mgb15">
+                        <mat-card-header class="mgb15"><span>Total and Good Count </span></mat-card-header>
+                        <mat-divider></mat-divider>
+                        <div class="margin">
+                            <canvas class="chart-container" id="chartGoodMachine2"></canvas>
+                        </div>
+                    </mat-card>
+                </div>
+            </div>
+        </div>
+    </mat-tab>
+
+    <mat-tab label="Machine 3">
+        <div class="margin">
+            <!-- Une seule ligne et 3 colonnes -->
+            <div fxLayout="row" fxLayout.xs="column" fxLayoutGap="10px" class="mgb15">
+                <!-- Premiere colonne pour le OEE -->
+                <div fxFlex="100" fxLayout="column" class="column">
+                    <mat-card class="height">
+                        <mat-card-header class="mgb15"><span>Overall Equipement Effectiveness</span></mat-card-header>
+                        <mat-divider></mat-divider>
+                        <div class="margin">
+                            <div class="spinner-wrapper mgt25">
+                                <mat-progress-spinner
+                                    class="custom-spinner"
+                                    [color]="colorAccent"
+                                    [mode]="mode"
+                                    [value]="oeePercentageMachine3">
+                                </mat-progress-spinner>
+                                <div class="spinner-value">{{ oeePercentageMachine3 }}%</div>
+                            </div>
+                        </div>
+                    </mat-card>
+                </div>
+            </div>
+            <div fxLayout="row" fxLayout.xs="column" fxLayoutGap="10px">
+                <!-- 2eme colonne pour les progresses -->
+                <div fxFlex="50" fxLayout="column" class="column">
+                    <!-- Quality -->
+                    <mat-card class="mgb15 height">
+                        <mat-card-header class="mgb15"><span>Quality</span></mat-card-header>
+                        <mat-divider></mat-divider>
+                        <div class="margin">
+                            <div class="spinner-wrapper mgt50">
+                                <mat-progress-spinner
+                                    class="custom-spinner"
+                                    [color]="colorPrimary"
+                                    [mode]="mode"
+                                    [value]="qualityPercentageMachine3">
+                                </mat-progress-spinner>
+                                <div class="spinner-value">{{ qualityPercentageMachine3 }}%</div>
+                            </div>
+                        </div>
+                    </mat-card>
+                    <!-- Performance -->
+                    <mat-card class="mgb15 height">
+                        <mat-card-header class="mgb15"><span>Performance</span></mat-card-header>
+                        <mat-divider></mat-divider>
+                        <div class="margin">
+                            <div class="spinner-wrapper mgt50">
+                                <mat-progress-spinner
+                                    class="custom-spinner"
+                                    [color]="colorPrimary"
+                                    [mode]="mode"
+                                    [value]="performancePercentageMachine3">
+                                </mat-progress-spinner>
+                                <div class="spinner-value">{{ performancePercentageMachine3 }}%</div>
+                            </div>
+                        </div>
+                    </mat-card>
+                    <!-- Availability -->
+                    <mat-card class="mgb15 height">
+                        <mat-card-header class="mgb15"><span>Availability</span></mat-card-header>
+                        <mat-divider></mat-divider>
+                        <div class="margin">
+                            <div class="margin">
+                                <div class="spinner-wrapper mgt50">
+                                    <mat-progress-spinner
+                                        class="custom-spinner"
+                                        [color]="colorPrimary"
+                                        [mode]="mode"
+                                        [value]="availabilityPercentageMachine3">
+                                    </mat-progress-spinner>
+                                    <div class="spinner-value">{{ availabilityPercentageMachine3 }}%</div>
+                                </div>
+                            </div>
+                        </div>
+                    </mat-card>
+                    <!-- Planned Time and running time -->
+                    <mat-card class="mgb15 height">
+                        <mat-card-header class="mgb15"><span>Running Time and Planned Time</span></mat-card-header>
+                        <mat-divider></mat-divider>
+                        <div class="margin">
+                            <div class="margin">
+                                <div class="spinner-wrapper mgt50">
+                                    <mat-progress-spinner
+                                        class="custom-spinner"
+                                        [color]="colorPrimary"
+                                        [mode]="mode"
+                                        [value]="dataRunningTimePercentageMachine3">
+                                    </mat-progress-spinner>
+                                    <div class="spinner-value">{{ dataRunningTimePercentageMachine3 }}%</div>
+                                </div>
+                            </div>
+                        </div>
+                    </mat-card>
+                </div>
+
+                <!-- 3eme colonnes pour les charts -->
+                <div fxFlex="50" fxLayout="column">
+                    <!-- Quality -->
+                    <mat-card class="mgb15 height">
+                        <mat-card-header class="mgb15"><span>Quality</span></mat-card-header>
+                        <mat-divider></mat-divider>
+                        <div class="margin">
+                            <canvas class="chart-container" id="chartQualityMachine3"></canvas>
+                        </div>
+                    </mat-card>
+
+                    <!-- Performance -->
+                    <mat-card class="mgb15 height">
+                        <mat-card-header class="mgb15"><span>Performance</span></mat-card-header>
+                        <mat-divider></mat-divider>
+                        <div class="margin">
+                            <canvas class="chart-container" id="chartPerformanceMachine3"></canvas>
+                        </div>
+                    </mat-card>
+
+                    <!-- Availability -->
+                    <mat-card class="mgb15 height">
+                        <mat-card-header class="mgb15"><span>Availability</span></mat-card-header>
+                        <mat-divider></mat-divider>
+                        <div class="margin">
+                            <canvas class="chart-container" id="chartAvailabilityMachine3"></canvas>
+                        </div>
+                    </mat-card>
+
+                    <!-- Plannification and running time -->
+                    <mat-card class="mgb15 height">
+                        <mat-card-header class="mgb15"><span>Running Time and Planned Time </span></mat-card-header>
+                        <mat-divider></mat-divider>
+                        <div class="margin">
+                            <canvas class="chart-container" id="chartRunningTimeMachine3"></canvas>
+                        </div>
+                    </mat-card>
+                </div>
+            </div>
+            <div fxLayout="row" fxLayout.xs="column" fxLayoutGap="10px" class="mgb15">
+                <div fxFlex="50" fxLayout="column">
+                    <!-- Total and Good Count -->
+                    <mat-card class="mgb15">
+                        <mat-card-header class="mgb15"><span>Total and Good Count </span></mat-card-header>
+                        <mat-divider></mat-divider>
+                        <div class="margin">
+                            <canvas class="chart-container" id="chartGoodMachine3"></canvas>
+                        </div>
+                    </mat-card>
+                </div>
+            </div>
+        </div>
+    </mat-tab>
+
+    <mat-tab label="Machine 4">
+        <div class="margin">
+            <!-- Une seule ligne et 3 colonnes -->
+            <div fxLayout="row" fxLayout.xs="column" fxLayoutGap="10px" class="mgb15">
+                <!-- Premiere colonne pour le OEE -->
+                <div fxFlex="100" fxLayout="column" class="column">
+                    <mat-card class="height">
+                        <mat-card-header class="mgb15"><span>Overall Equipement Effectiveness</span></mat-card-header>
+                        <mat-divider></mat-divider>
+                        <div class="margin">
+                            <div class="spinner-wrapper mgt25">
+                                <mat-progress-spinner
+                                    class="custom-spinner"
+                                    [color]="colorAccent"
+                                    [mode]="mode"
+                                    [value]="oeePercentageMachine4">
+                                </mat-progress-spinner>
+                                <div class="spinner-value">{{ oeePercentageMachine4 }}%</div>
+                            </div>
+                        </div>
+                    </mat-card>
+                </div>
+            </div>
+            <div fxLayout="row" fxLayout.xs="column" fxLayoutGap="10px">
+                <!-- 2eme colonne pour les progresses -->
+                <div fxFlex="50" fxLayout="column" class="column">
+                    <!-- Quality -->
+                    <mat-card class="mgb15 height">
+                        <mat-card-header class="mgb15"><span>Quality</span></mat-card-header>
+                        <mat-divider></mat-divider>
+                        <div class="margin">
+                            <div class="spinner-wrapper mgt50">
+                                <mat-progress-spinner
+                                    class="custom-spinner"
+                                    [color]="colorPrimary"
+                                    [mode]="mode"
+                                    [value]="qualityPercentageMachine4">
+                                </mat-progress-spinner>
+                                <div class="spinner-value">{{ qualityPercentageMachine4 }}%</div>
+                            </div>
+                        </div>
+                    </mat-card>
+                    <!-- Performance -->
+                    <mat-card class="mgb15 height">
+                        <mat-card-header class="mgb15"><span>Performance</span></mat-card-header>
+                        <mat-divider></mat-divider>
+                        <div class="margin">
+                            <div class="spinner-wrapper mgt50">
+                                <mat-progress-spinner
+                                    class="custom-spinner"
+                                    [color]="colorPrimary"
+                                    [mode]="mode"
+                                    [value]="performancePercentageMachine4">
+                                </mat-progress-spinner>
+                                <div class="spinner-value">{{ performancePercentageMachine4 }}%</div>
+                            </div>
+                        </div>
+                    </mat-card>
+                    <!-- Availability -->
+                    <mat-card class="mgb15 height">
+                        <mat-card-header class="mgb15"><span>Availability</span></mat-card-header>
+                        <mat-divider></mat-divider>
+                        <div class="margin">
+                            <div class="margin">
+                                <div class="spinner-wrapper mgt50">
+                                    <mat-progress-spinner
+                                        class="custom-spinner"
+                                        [color]="colorPrimary"
+                                        [mode]="mode"
+                                        [value]="availabilityPercentageMachine4">
+                                    </mat-progress-spinner>
+                                    <div class="spinner-value">{{ availabilityPercentageMachine4 }}%</div>
+                                </div>
+                            </div>
+                        </div>
+                    </mat-card>
+                    <!-- Planned Time and running time -->
+                    <mat-card class="mgb15 height">
+                        <mat-card-header class="mgb15"><span>Running Time and Planned Time</span></mat-card-header>
+                        <mat-divider></mat-divider>
+                        <div class="margin">
+                            <div class="margin">
+                                <div class="spinner-wrapper mgt50">
+                                    <mat-progress-spinner
+                                        class="custom-spinner"
+                                        [color]="colorPrimary"
+                                        [mode]="mode"
+                                        [value]="dataRunningTimePercentageMachine4">
+                                    </mat-progress-spinner>
+                                    <div class="spinner-value">{{ dataRunningTimePercentageMachine4 }}%</div>
+                                </div>
+                            </div>
+                        </div>
+                    </mat-card>
+                </div>
+
+                <!-- 3eme colonnes pour les charts -->
+                <div fxFlex="50" fxLayout="column">
+                    <!-- Quality -->
+                    <mat-card class="mgb15 height">
+                        <mat-card-header class="mgb15"><span>Quality</span></mat-card-header>
+                        <mat-divider></mat-divider>
+                        <div class="margin">
+                            <canvas class="chart-container" id="chartQualityMachine4"></canvas>
+                        </div>
+                    </mat-card>
+
+                    <!-- Performance -->
+                    <mat-card class="mgb15 height">
+                        <mat-card-header class="mgb15"><span>Performance</span></mat-card-header>
+                        <mat-divider></mat-divider>
+                        <div class="margin">
+                            <canvas class="chart-container" id="chartPerformanceMachine4"></canvas>
+                        </div>
+                    </mat-card>
+
+                    <!-- Availability -->
+                    <mat-card class="mgb15 height">
+                        <mat-card-header class="mgb15"><span>Availability</span></mat-card-header>
+                        <mat-divider></mat-divider>
+                        <div class="margin">
+                            <canvas class="chart-container" id="chartAvailabilityMachine4"></canvas>
+                        </div>
+                    </mat-card>
+
+                    <!-- Plannification and running time -->
+                    <mat-card class="mgb15 height">
+                        <mat-card-header class="mgb15"><span>Running Time and Planned Time </span></mat-card-header>
+                        <mat-divider></mat-divider>
+                        <div class="margin">
+                            <canvas class="chart-container" id="chartRunningTimeMachine4"></canvas>
+                        </div>
+                    </mat-card>
+                </div>
+            </div>
+            <div fxLayout="row" fxLayout.xs="column" fxLayoutGap="10px" class="mgb15">
+                <div fxFlex="50" fxLayout="column">
+                    <!-- Total and Good Count -->
+                    <mat-card class="mgb15">
+                        <mat-card-header class="mgb15"><span>Total and Good Count </span></mat-card-header>
+                        <mat-divider></mat-divider>
+                        <div class="margin">
+                            <canvas class="chart-container" id="chartGoodMachine4"></canvas>
+                        </div>
+                    </mat-card>
+                </div>
+            </div>
+        </div>
+    </mat-tab>
+    <mat-tab label="All Machines">
+        <div class="margin">
+            <!-- Performance -->
+            <div fxLayout="row" fxLayout.xs="column" fxLayoutGap="20px" class="mgt20">
+                
+                <div fxFlex="49.3" fxLayout="column">
+                    <mat-card class="chart-card height">
+                        <mat-card-header class="mgb15"><span>Performance</span></mat-card-header>
+                        <mat-divider></mat-divider>
+                        <canvas class="chart-container" id="chartPerformance"></canvas>
+                    </mat-card>
+                </div>
+
+                <div fxFlex="49.3" fxLayout="column">
+                    <div fxLayout="row" fxLayout.xs="column" fxLayoutGap="20px">
+                        <div fxFlex="49.3" fxLayout="column">
+                            <mat-card>
+                                <mat-card-header class="mgb15"><span>Machine 1 Performance</span></mat-card-header>
+                                <mat-divider></mat-divider>
+                                <div class="margin">
+                                    <div class="spinner-wrapper">
+                                        <mat-progress-spinner
+                                            class="custom-spinner"
+                                            [color]="colorPrimary"
+                                            [mode]="mode"
+                                            [value]="performancePercentageMachine1">
+                                        </mat-progress-spinner>
+                                        <div class="spinner-value">{{ performancePercentageMachine1 }}%</div>
+                                    </div>
+                                </div>
+                            </mat-card>
+                        </div>
+                        <div fxFlex="49.3" fxLayout="column">
+                            <mat-card>
+                                <mat-card-header class="mgb15"><span>Machine 2 Performance</span></mat-card-header>
+                                <mat-divider></mat-divider>
+                                <div class="margin">
+                                    
+                                    <div class="spinner-wrapper">
+                                        <mat-progress-spinner
+                                            class="custom-spinner"
+                                            [color]="colorPrimary"
+                                            [mode]="mode"
+                                            [value]="performancePercentageMachine2">
+                                        </mat-progress-spinner>
+                                        <div class="spinner-value">{{ performancePercentageMachine2 }}%</div>
+                                    </div>
+                                </div>
+                            </mat-card>
+                        </div>
+                    </div>
+                    <div fxLayout="row" fxLayout.xs="column" fxLayoutGap="20px" class="mgt20">
+                        <div fxFlex="49.3" fxLayout="column">
+                            <mat-card>
+                                <mat-card-header class="mgb15"><span>Machine 3 Performance</span></mat-card-header>
+                                <mat-divider></mat-divider>
+                                <div class="margin">
+                                    
+                                    <div class="spinner-wrapper">
+                                        <mat-progress-spinner
+                                            class="custom-spinner"
+                                            [color]="colorPrimary"
+                                            [mode]="mode"
+                                            [value]="performancePercentageMachine3">
+                                        </mat-progress-spinner>
+                                        <div class="spinner-value">{{ performancePercentageMachine3 }}%</div>
+                                    </div>
+                                </div>
+                            </mat-card>
+                        </div>
+                        <div fxFlex="49.3" fxLayout="column">
+                            <mat-card>
+                                <mat-card-header class="mgb15"><span>Machine 4 Performance</span></mat-card-header>
+                                <mat-divider></mat-divider>
+                                <div class="margin">
+                                    
+                                    <div class="spinner-wrapper">
+                                        <mat-progress-spinner
+                                            class="custom-spinner"
+                                            [color]="colorPrimary"
+                                            [mode]="mode"
+                                            [value]="performancePercentageMachine4">
+                                        </mat-progress-spinner>
+                                        <div class="spinner-value">{{ performancePercentageMachine4 }}%</div>
+                                    </div>
+                                </div>
+                            </mat-card>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Availability -->
+            <div fxLayout="row" fxLayout.xs="column" fxLayoutGap="20px" class="mgt20">
+                
+                <div fxFlex="49.3" fxLayout="column">
+                    <div fxLayout="row" fxLayout.xs="column" fxLayoutGap="20px">
+                        <div fxFlex="49.3" fxLayout="column">
+                            <mat-card>
+                                <mat-card-header class="mgb15"><span>Machine 1 Availability</span></mat-card-header>
+                                <mat-divider></mat-divider>
+                                <div class="margin">
+                                    <div class="spinner-wrapper">
+                                        <mat-progress-spinner
+                                            class="custom-spinner"
+                                            [color]="colorPrimary"
+                                            [mode]="mode"
+                                            [value]="availabilityPercentageMachine1">
+                                        </mat-progress-spinner>
+                                        <div class="spinner-value">{{ availabilityPercentageMachine1 }}%</div>
+                                    </div>
+                                </div>
+                            </mat-card>
+                        </div>
+                        <div fxFlex="49.3" fxLayout="column">
+                            <mat-card>
+                                <mat-card-header class="mgb15"><span>Machine 2 Availability</span></mat-card-header>
+                                <mat-divider></mat-divider>
+                                <div class="margin">
+                                    
+                                    <div class="spinner-wrapper">
+                                        <mat-progress-spinner
+                                            class="custom-spinner"
+                                            [color]="colorPrimary"
+                                            [mode]="mode"
+                                            [value]="availabilityPercentageMachine2">
+                                        </mat-progress-spinner>
+                                        <div class="spinner-value">{{ availabilityPercentageMachine2 }}%</div>
+                                    </div>
+                                </div>
+                            </mat-card>
+                        </div>
+                    </div>
+                    <div fxLayout="row" fxLayout.xs="column" fxLayoutGap="20px" class="mgt20">
+                        <div fxFlex="49.3" fxLayout="column">
+                            <mat-card>
+                                <mat-card-header class="mgb15"><span>Machine 3 Availability</span></mat-card-header>
+                                <mat-divider></mat-divider>
+                                <div class="margin">
+                                    
+                                    <div class="spinner-wrapper">
+                                        <mat-progress-spinner
+                                            class="custom-spinner"
+                                            [color]="colorPrimary"
+                                            [mode]="mode"
+                                            [value]="availabilityPercentageMachine3">
+                                        </mat-progress-spinner>
+                                        <div class="spinner-value">{{ availabilityPercentageMachine3 }}%</div>
+                                    </div>
+                                </div>
+                            </mat-card>
+                        </div>
+                        <div fxFlex="49.3" fxLayout="column">
+                            <mat-card>
+                                <mat-card-header class="mgb15"><span>Machine 4 Availability</span></mat-card-header>
+                                <mat-divider></mat-divider>
+                                <div class="margin">
+                                    
+                                    <div class="spinner-wrapper">
+                                        <mat-progress-spinner
+                                            class="custom-spinner"
+                                            [color]="colorPrimary"
+                                            [mode]="mode"
+                                            [value]="availabilityPercentageMachine4">
+                                        </mat-progress-spinner>
+                                        <div class="spinner-value">{{ availabilityPercentageMachine4 }}%</div>
+                                    </div>
+                                </div>
+                            </mat-card>
+                        </div>
+                    </div>
+                </div>
+
+                <div fxFlex="49.3" fxLayout="column">
+                    <mat-card class="chart-card height">
+                        <mat-card-header class="mgb15"><span>Availability</span></mat-card-header>
+                        <mat-divider></mat-divider>
+                        <canvas class="chart-container" id="chartAvailability"></canvas>
+                    </mat-card>
+                </div>
+
+            </div>
+
+            <!-- OEE -->
+            <div fxLayout="row" fxLayout.xs="column" fxLayoutGap="20px" class="mgt20">
+                
+                <div fxFlex="49.3" fxLayout="column">
+                    <mat-card class="chart-card height">
+                        <mat-card-header class="mgb15"><span>Overall Equipment Effectiveness</span></mat-card-header>
+                        <mat-divider></mat-divider>
+                        <canvas class="chart-container" id="chartOEE"></canvas>
+                    </mat-card>
+                </div>
+
+                <div fxFlex="49.3" fxLayout="column">
+                    <div fxLayout="row" fxLayout.xs="column" fxLayoutGap="20px">
+                        <div fxFlex="49.3" fxLayout="column">
+                            <mat-card>
+                                <mat-card-header class="mgb15"><span>Machine 1 OEE</span></mat-card-header>
+                                <mat-divider></mat-divider>
+                                <div class="margin">
+                                    <div class="spinner-wrapper">
+                                        <mat-progress-spinner
+                                            class="custom-spinner"
+                                            [color]="colorPrimary"
+                                            [mode]="mode"
+                                            [value]="oeePercentageMachine1">
+                                        </mat-progress-spinner>
+                                        <div class="spinner-value">{{ oeePercentageMachine1 }}%</div>
+                                    </div>
+                                </div>
+                            </mat-card>
+                        </div>
+                        <div fxFlex="49.3" fxLayout="column">
+                            <mat-card>
+                                <mat-card-header class="mgb15"><span>Machine 2 OEE</span></mat-card-header>
+                                <mat-divider></mat-divider>
+                                <div class="margin">
+                                    
+                                    <div class="spinner-wrapper">
+                                        <mat-progress-spinner
+                                            class="custom-spinner"
+                                            [color]="colorPrimary"
+                                            [mode]="mode"
+                                            [value]="oeePercentageMachine2">
+                                        </mat-progress-spinner>
+                                        <div class="spinner-value">{{ oeePercentageMachine2 }}%</div>
+                                    </div>
+                                </div>
+                            </mat-card>
+                        </div>
+                    </div>
+                    <div fxLayout="row" fxLayout.xs="column" fxLayoutGap="20px" class="mgt20">
+                        <div fxFlex="49.3" fxLayout="column">
+                            <mat-card>
+                                <mat-card-header class="mgb15"><span>Machine 3 OEE</span></mat-card-header>
+                                <mat-divider></mat-divider>
+                                <div class="margin">
+                                    
+                                    <div class="spinner-wrapper">
+                                        <mat-progress-spinner
+                                            class="custom-spinner"
+                                            [color]="colorPrimary"
+                                            [mode]="mode"
+                                            [value]="oeePercentageMachine3">
+                                        </mat-progress-spinner>
+                                        <div class="spinner-value">{{ oeePercentageMachine3 }}%</div>
+                                    </div>
+                                </div>
+                            </mat-card>
+                        </div>
+                        <div fxFlex="49.3" fxLayout="column">
+                            <mat-card>
+                                <mat-card-header class="mgb15"><span>Machine 4 OEE</span></mat-card-header>
+                                <mat-divider></mat-divider>
+                                <div class="margin">
+                                    
+                                    <div class="spinner-wrapper">
+                                        <mat-progress-spinner
+                                            class="custom-spinner"
+                                            [color]="colorPrimary"
+                                            [mode]="mode"
+                                            [value]="oeePercentageMachine4">
+                                        </mat-progress-spinner>
+                                        <div class="spinner-value">{{ oeePercentageMachine4 }}%</div>
+                                    </div>
+                                </div>
+                            </mat-card>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Quality -->
+            <div fxLayout="row" fxLayout.xs="column" fxLayoutGap="20px" class="mgt20">
+                
+
+                <div fxFlex="49.3" fxLayout="column">
+                    <div fxLayout="row" fxLayout.xs="column" fxLayoutGap="20px">
+                        <div fxFlex="49.3" fxLayout="column">
+                            <mat-card>
+                                <mat-card-header class="mgb15"><span>Machine 1 Quality</span></mat-card-header>
+                                <mat-divider></mat-divider>
+                                <div class="margin">
+                                    <div class="spinner-wrapper">
+                                        <mat-progress-spinner
+                                            class="custom-spinner"
+                                            [color]="colorPrimary"
+                                            [mode]="mode"
+                                            [value]="qualityPercentageMachine1">
+                                        </mat-progress-spinner>
+                                        <div class="spinner-value">{{ qualityPercentageMachine1 }}%</div>
+                                    </div>
+                                </div>
+                            </mat-card>
+                        </div>
+                        <div fxFlex="49.3" fxLayout="column">
+                            <mat-card>
+                                <mat-card-header class="mgb15"><span>Machine 2 Quality</span></mat-card-header>
+                                <mat-divider></mat-divider>
+                                <div class="margin">
+                                    
+                                    <div class="spinner-wrapper">
+                                        <mat-progress-spinner
+                                            class="custom-spinner"
+                                            [color]="colorPrimary"
+                                            [mode]="mode"
+                                            [value]="qualityPercentageMachine2">
+                                        </mat-progress-spinner>
+                                        <div class="spinner-value">{{ qualityPercentageMachine2 }}%</div>
+                                    </div>
+                                </div>
+                            </mat-card>
+                        </div>
+                    </div>
+                    <div fxLayout="row" fxLayout.xs="column" fxLayoutGap="20px" class="mgt20">
+                        <div fxFlex="49.3" fxLayout="column">
+                            <mat-card>
+                                <mat-card-header class="mgb15"><span>Machine 3 Quality</span></mat-card-header>
+                                <mat-divider></mat-divider>
+                                <div class="margin">
+                                    
+                                    <div class="spinner-wrapper">
+                                        <mat-progress-spinner
+                                            class="custom-spinner"
+                                            [color]="colorPrimary"
+                                            [mode]="mode"
+                                            [value]="qualityPercentageMachine3">
+                                        </mat-progress-spinner>
+                                        <div class="spinner-value">{{ qualityPercentageMachine3 }}%</div>
+                                    </div>
+                                </div>
+                            </mat-card>
+                        </div>
+                        <div fxFlex="49.3" fxLayout="column">
+                            <mat-card>
+                                <mat-card-header class="mgb15"><span>Machine 4 Quality</span></mat-card-header>
+                                <mat-divider></mat-divider>
+                                <div class="margin">
+                                    
+                                    <div class="spinner-wrapper">
+                                        <mat-progress-spinner
+                                            class="custom-spinner"
+                                            [color]="colorPrimary"
+                                            [mode]="mode"
+                                            [value]="qualityPercentageMachine4">
+                                        </mat-progress-spinner>
+                                        <div class="spinner-value">{{ qualityPercentageMachine4 }}%</div>
+                                    </div>
+                                </div>
+                            </mat-card>
+                        </div>
+                    </div>
+                </div>
+
+                <div fxFlex="49.3" fxLayout="column">
+                    <mat-card class="chart-card height">
+                        <mat-card-header class="mgb15"><span>Quality</span></mat-card-header>
+                        <mat-divider></mat-divider>
+                        <canvas class="chart-container" id="chartQuality"></canvas>
+                    </mat-card>
+                </div>
+
+            </div>
+        </div>
+    </mat-tab>
+</mat-tab-group>

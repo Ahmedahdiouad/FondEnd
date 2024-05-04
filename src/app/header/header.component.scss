@@ -1,0 +1,16 @@
+.example-spacer {
+    flex: 1 1 auto;
+}
+
+.custom-toolbar {
+    background-color: #ffffff; // Change the color to your desired color
+    color: black; // Change text color to contrast with the background
+}
+
+.custom-button {
+    color: black; // Change button icon color to contrast with the background
+}
+
+.custom-button:hover {
+background-color: transparent; // Change button hover background color
+}

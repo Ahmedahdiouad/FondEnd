@@ -1,0 +1,136 @@
+#cal-buttons {
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  #cal-date-nav-buttons {
+    display: flex;
+    align-items: center;
+  }
+  
+  #cal-date-nav-buttons button {
+    margin-right: 5px;
+  }
+  
+  #cal-view-nav-buttons {
+    display: flex;
+    align-items: center;
+  }
+  
+  #cal-view-nav-buttons button {
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff; /* Couleur de fond */
+    color: white; /* Couleur du texte */
+    cursor: pointer;
+    justify-content: end;
+    align-items: center;
+    margin : 10px;
+    display: flex;
+  }
+  
+  #cal-view-nav-buttons button:hover {
+    background-color: #0056b3; /* Couleur de fond au survol */
+  }
+  
+  #cal-date-field {
+    font-size: 18px;
+    font-weight: bold;
+    flex: 1; /* Pour occuper l'espace disponible et être au centre */
+  }
+  
+  #cal-date-field, #cal-date-nav-buttons {
+    text-align: center; /* Pour aligner le texte et les boutons au centre */
+  }
+
+  #calendar-container{
+    margin : 10px;
+  }
+
+/* Inside your CSS or SCSS file */
+.add-button {
+  position: fixed;
+  bottom: 20px; /* Adjust as needed */
+  right: 50px; /* Adjust as needed */
+  padding: 10px 20px;
+  background-color: #007bff; /* Adjust the background color */
+  color: #fff; /* Adjust the text color */
+  border: none;
+  border-radius: 100px; /* Adjust to control the roundness */
+  cursor: pointer;
+  z-index: 3;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+  transition: background-color 0.3s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.add-button:hover {
+  background-color: #0056b3; /* Adjust the hover background color */
+}
+
+.margin {
+  margin: 10px;
+  margin-bottom: 20px;
+}
+
+.form-field {
+  width: 100%;
+  margin: none;
+}
+
+.form-field-add {
+  width: 100%;
+}
+
+.refresh-button {
+  float: inline-end;
+  width: 150px;
+  @media only screen and (max-width: 600px) {
+      width: 100%;
+  }
+}
+
+// to add for center a table and color the delete button :
+.align{
+  text-align: center;
+}
+
+.color-delete{
+  color : red;
+}
+
+table {
+  width: 100%;
+}
+
+.mat-elevation-z8 {
+  width: 100%;
+  border-collapse: collapse;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.mat-elevation-z8 th,
+.mat-elevation-z8 td {
+  padding: 12px;
+  text-align: center;
+  border-bottom: 1px solid #ddd;
+}
+
+.mat-elevation-z8 th {
+  background-color: #f2f2f2;
+  color: #333;
+  font-weight: bold;
+}
+
+.mat-elevation-z8 tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.mat-elevation-z8 tbody tr:hover {
+  background-color: #f2f2f2;
+}

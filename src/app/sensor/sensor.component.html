@@ -1,0 +1,86 @@
+
+<div class="margin">
+    <div fxLayout="row" fxLayout.xs="column" fxLayoutGap="20px">
+        <!-- First row -->
+        <div fxFlex="50" fxLayout="column">
+            <mat-card class="chart-card">
+                <mat-card-header><span>Temperature</span></mat-card-header>
+                <mat-divider></mat-divider>
+                <canvas class="chart-container" id="chart2"></canvas>
+            </mat-card>
+        </div>
+        <div fxFlex="50" fxLayout="column">
+            <mat-card class="chart-card">
+                <mat-card-header><span>Paint Level</span></mat-card-header>
+                <mat-divider></mat-divider>
+                <canvas class="chart-container" id="chartPaintLevel"></canvas>
+            </mat-card>
+        </div>
+    </div>
+
+    <div fxLayout="row" fxLayout.xs="column" fxLayoutGap="20px" class="mgt20">
+        
+        <div fxFlex="50" fxLayout="column">
+            <mat-card class="chart-card">
+                <mat-card-header><span>Humidity</span></mat-card-header>
+                <mat-divider></mat-divider>
+                <canvas class="chart-container" id="chartHumidity"></canvas>
+            </mat-card>
+        </div>
+
+        <div fxFlex="50" fxLayout="column">
+            <mat-card class="chart-card">
+                <mat-card-header><span>Flow</span></mat-card-header>
+                <mat-divider></mat-divider>
+                <canvas class="chart-container" id="chart4"></canvas>
+            </mat-card>
+        </div>
+    </div>
+
+    <div fxLayout="row" fxLayout.xs="column" fxLayoutGap="20px" class="mgt20">
+        
+        <div fxFlex="50" fxLayout="column">
+            <mat-card class="chart-card">
+                <mat-card-header><span>Surface Quality</span></mat-card-header>
+                <mat-divider></mat-divider>
+                <canvas class="chart-container" id="chartQuality"></canvas>
+            </mat-card>
+        </div>
+
+        <div fxFlex="50" fxLayout="column">
+            <mat-card class="chart-card">
+                <mat-card-header><span>Position</span></mat-card-header>
+                <mat-divider></mat-divider>
+                <canvas class="chart-container" id="chartPosition"></canvas>
+            </mat-card>
+        </div>
+    </div>
+
+    <div fxLayout="row" fxLayout.xs="column" fxLayoutGap="20px" class="mgt20">
+        <div fxFlex="50" fxLayout="column">
+            <mat-card class="chart-card">
+                <mat-card-header><span>Flow and Paint Level</span></mat-card-header>
+                <mat-divider></mat-divider>
+                <div id="chart3" style="width: 600px; height: 400px;"></div>
+            </mat-card>
+        </div>
+        <div fxFlex="50" fxLayout="column">
+            <mat-card class="chart-card">
+                <mat-card-header><span>Temperature and Humidity</span></mat-card-header>
+                <mat-divider></mat-divider>
+                <div id="chart" style="width: 600px; height: 400px;"></div>
+            </mat-card>
+        </div>
+    </div>
+    <div fxLayout="row" fxLayout.xs="column" fxLayoutGap="20px" class="mgt20">
+        <div fxFlex="100" fxLayout="column">
+            <mat-card class="chart-card">
+                <mat-card-header><span>Humidity</span></mat-card-header>
+                <mat-divider></mat-divider>
+                <div id="chartCompareHumidity" style="width: auto; height: 400px;"></div>
+            </mat-card>
+        </div>
+    </div>
+</div>
+
+

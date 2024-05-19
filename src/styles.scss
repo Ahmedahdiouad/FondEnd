@@ -13,3 +13,26 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .timepicker-backdrop-overlay{
     z-index: 10000000 !important;
 }
+
+/* You can add global styles to this file, and also import other style files */
+
+.spacer {
+    flex: 1 auto;
+}
+.mat-mdc-snack-bar-container .mdc-snackbar__surface {
+    background-color: transparent !important;
+    border-radius: 10px !important;
+}
+.mat-mdc-snack-bar-container .mdc-snackbar__label {
+    color: black !important;
+}
+
+.green-snackbar {
+    background-color: #00ff7f !important;
+    border-radius: 10px;
+}
+
+.red-snackbar {
+    background-color: #d22a2a !important;
+    border-radius: 10px;
+}

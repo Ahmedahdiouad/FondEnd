@@ -1,0 +1,101 @@
+.margin{
+    margin: 20px;
+}
+
+/* shipping.component.scss */
+  
+  /* Style for the search input */
+  .mat-form-field {
+    width: 100%;
+  }
+  
+  .form-field{
+    width: 100%;
+  }
+
+  /* Style for the search icon */
+  .mat-form-field-prefix {
+    color: #666; /* Adjust color as needed */
+  }
+  
+  /* Style for the vehicle list */
+  .vehicle-item {
+    border-bottom: 1px solid #ddd;
+    padding: 10px;
+  }
+  
+  /* Style for the vehicle details */
+  .vehicle-details {
+    margin-bottom: 10px;
+  }
+  
+  /* Style for the vehicle icon */
+  .vehicle-icon {
+    color: #007bff; /* Adjust color as needed */
+    margin-right: 10px;
+  }
+  
+  /* Style for the vehicle properties */
+  .vehicle-property {
+    font-weight: bold;
+  }
+  
+  /* Style for the horizontal line */
+  hr {
+    border: none;
+    border-top: 1px solid #ddd;
+    margin: 10px 0;
+  }
+  
+  .vehicle-item-first{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .vehicle-item-second{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .mb10{
+    margin-bottom: 10px;
+  }
+
+  /* Inside your CSS or SCSS file */
+.add-button {
+    position: fixed;
+    bottom: 20px; /* Adjust as needed */
+    right: 50px; /* Adjust as needed */
+    padding: 10px 20px;
+    background-color: #007bff; /* Adjust the background color */
+    color: #fff; /* Adjust the text color */
+    border: none;
+    border-radius: 100px; /* Adjust to control the roundness */
+    cursor: pointer;
+    z-index: 3;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+    transition: background-color 0.3s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .add-button:hover {
+    background-color: #0056b3; /* Adjust the hover background color */
+  }
+
+.alignButtons{
+  display: flex;
+  align-items: center;
+  justify-content: end;
+}
+
+.blueColor{
+  color : blue;
+}
+
+.redColor {
+  color : red;
+}

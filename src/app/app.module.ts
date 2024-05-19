@@ -3,6 +3,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { GoogleMapsModule } from '@angular/google-maps';
 import { BrowserModule, provideClientHydration } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
@@ -24,7 +25,9 @@ import { ManageMachinesComponent } from './manage-machines/manage-machines.compo
 import { ManageSensorsComponent } from './manage-sensors/manage-sensors.component';
 import { SensorComponent } from './sensor/sensor.component';
 import { MaterialModule } from './shared/material-module';
+import { ShippingComponent } from './shipping/shipping.component';
 import { SidenavComponent } from './sidenav/sidenav.component';
+import { ShippingChildComponent } from './dialog/shipping-child/shipping-child.component';
 
 
 const ngxUiLoaderConfig : NgxUiLoaderConfig = {
@@ -62,9 +65,12 @@ const ngxUiLoaderConfig : NgxUiLoaderConfig = {
     MaintenanceComponent,
     MaintenanceChildComponent,
     ConfirmationComponent,
+    ShippingComponent,
+    ShippingChildComponent,
   ],
   imports: [
     BrowserModule,
+    GoogleMapsModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,

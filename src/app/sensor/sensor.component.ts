@@ -50,6 +50,8 @@ export class SensorComponent implements OnInit {
   
   constructor(private sensorWebSocket: SensorwebsocketService) {}
 
+  
+
   ngOnInit(): void {
 
     // Subscribe to real-time data from WebSocket service

@@ -1,0 +1,92 @@
+<form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
+
+<mat-toolbar class="menuColor">
+    <mat-toolbar-row fxLayout="row">
+        <span class="align">{{ dialogData.action === 'Edit' ? 'Shipment Information' : 'Add Shipment' }}</span>
+        <span class="spacer"></span>
+    </mat-toolbar-row>
+</mat-toolbar>
+    
+<mat-dialog-content class="mat-typography">
+        <div fxFlex fxLayout="column">
+
+            <!-- Title -->
+            <mat-form-field fxFlex>
+                <mat-label>title</mat-label>
+                <input matInput formControlName="title" placeholder="title"/>
+            </mat-form-field>
+
+            <!-- From where -->
+            <mat-form-field fxFlex *ngIf="dialogData.action != 'Edit'">
+                <mat-label>From where</mat-label>
+                <mat-select formControlName="fromCity" placeholder="Select City" required>
+                    <mat-option *ngFor="let city of availableCities" [value]="city.id">
+                        {{ city.name }}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <mat-form-field fxFlex *ngIf="dialogData.action != 'Add'">
+                <mat-label>From where</mat-label>
+                <input matInput formControlName="fromCity" placeholder="fromCity" [disabled]="true"/>
+            </mat-form-field>
+
+            <!-- To where -->
+            <mat-form-field fxFlex *ngIf="dialogData.action != 'Edit'">
+                <mat-label>To where</mat-label>
+                <mat-select formControlName="toCity" placeholder="Select City" required>
+                    <mat-option *ngFor="let city of availableCities" [value]="city.id">{{ city.name }}</mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <mat-form-field fxFlex *ngIf="dialogData.action != 'Add'">
+                <mat-label>To where</mat-label>
+                <input matInput formControlName="toCity" placeholder="toCity" [disabled]="true"/>
+            </mat-form-field>
+
+            <mat-form-field fxFlex>
+                <mat-label>Duration</mat-label>
+                <input matInput placeholder="Duration" formControlName="duration" [value]="dialogData.action === 'Add' ? calculatedDuration : ''" [disabled]="true"/>
+            </mat-form-field>
+        </div>
+
+        <div fxFlex fxLayout="column">
+            <mat-form-field fxFlex>
+                <mat-label>Driving state</mat-label>
+                <input matInput placeholder="Parked" formControlName="state" [value]="dialogData.action === 'Add' ? state : '' " [disabled]="true"/>
+            </mat-form-field>
+
+            <mat-form-field fxFlex>
+                <mat-label>Date</mat-label>
+                <input matInput formControlName="startDate" [matDatepicker]="pickerStart" placeholder="Start Date" required />
+                <mat-datepicker-toggle matSuffix [for]="pickerStart"></mat-datepicker-toggle>
+                <mat-datepicker #pickerStart></mat-datepicker>
+            </mat-form-field>
+
+            <!-- Driver  -->
+            <mat-form-field fxFlex *ngIf="dialogData.action != 'Edit'">
+                <mat-label>Driver</mat-label>
+                <mat-select formControlName="driver" placeholder="Select Driver" required>
+                <mat-option *ngFor="let driver of availableDrivers" [value]="driver.id">{{ driver.name }}</mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <mat-form-field fxFlex *ngIf="dialogData.action != 'Add'">
+                <mat-label>Driver</mat-label>
+                <input matInput formControlName="driver" placeholder="driver" />
+            </mat-form-field>
+
+            <mat-form-field fxFlex>
+                <mat-label>Distance</mat-label>
+                <input matInput placeholder="Distance" formControlName="distance" [value]="dialogData.action === 'Add' ? calculatedDistance : ''" [disabled]="true"/>
+            </mat-form-field>
+        </div>
+
+
+</mat-dialog-content>
+<mat-dialog-actions class="add-button">
+    <div>
+        <button type="submit" mat-raised-button color="primary" [hidden]="dialogData.action =='Edit'">Add</button>
+    </div>
+</mat-dialog-actions>
+</form>

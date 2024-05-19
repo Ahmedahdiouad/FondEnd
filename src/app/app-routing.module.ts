@@ -8,6 +8,7 @@ import { MaintenanceComponent } from './maintenance/maintenance.component';
 import { ManageMachinesComponent } from './manage-machines/manage-machines.component';
 import { ManageSensorsComponent } from './manage-sensors/manage-sensors.component';
 import { SensorComponent } from './sensor/sensor.component';
+import { ShippingComponent } from './shipping/shipping.component';
 
 const routes: Routes = [
   {path : '',component : LoginComponent},
@@ -18,7 +19,8 @@ const routes: Routes = [
       {path : 'manage/machines', component : ManageMachinesComponent},
       {path : 'manage/sensors', component : ManageSensorsComponent},
       {path : 'login2', component : Login2Component},
-      {path : 'maintenance', component : MaintenanceComponent}
+      {path : 'maintenance', component : MaintenanceComponent},
+      {path : 'shipping', component : ShippingComponent}
     ]
   }
 ];

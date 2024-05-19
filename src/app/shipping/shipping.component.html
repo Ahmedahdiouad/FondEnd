@@ -1,0 +1,69 @@
+<div class="margin">
+     <!-- Inside your HTML template -->
+     <button class="add-button" (click)="handleAddAction()">
+        <mat-icon>add</mat-icon>
+    </button>
+    <!-- Une seule ligne et 3 colonnes -->
+    <div fxLayout="row" fxLayout.xs="column" fxLayoutGap="10px" class="mgb15">
+        <!-- Premiere colonne pour le OEE -->
+        <div fxFlex="100" fxLayout="column" class="column">
+            <mat-card>
+                <form class="search-form">
+                    <mat-form-field class="form-field">
+                        <mat-label>Recherche</mat-label>
+                        <input matInput placeholder="Recherche" class="search-input"/>
+                    </mat-form-field>
+                </form>
+                
+                <div class="vehicle-list">
+                        <div class="vehicle-item" *ngFor="let vehicle of vehicles">
+                            <div class="vehicle-item-first mb10">
+                                <div class="vehicle-item-first">
+                                    <mat-icon class="vehicle-icon">directions_car</mat-icon> <strong>{{ vehicle.nom }}</strong>
+                                </div>
+
+                                <div>
+                                    <button mat-icon-button matTooltip="Driving" [disabled]="true">
+                                        <mat-icon class="blueColor" *ngIf="vehicle.drivingOrParked === 'driving'">airline_seat_recline_normal</mat-icon>
+                                        <mat-icon class="redColor" *ngIf="vehicle.drivingOrParked === 'parked'">local_parking</mat-icon>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="vehicle-item-second">
+                                <div>
+                                    {{ vehicle.date | date: 'dd/MM/yyyy' }} : <strong>{{vehicle.driver}}</strong>
+                                </div>
+                                <button mat-icon-button (click)="handleEditAction(vehicle)">
+                                    <mat-icon>remove_red_eye</mat-icon>
+                                </button>
+                            </div>
+                    </div>
+                </div>
+
+            </mat-card>
+        </div>
+
+        <div fxFlex="100" fxLayout="column" class="column">
+            <mat-card class="height">
+                <google-map height="450px"
+                            width="1000px"
+                            [center]="center"
+                            [zoom]="zoom"
+                            (mapClick)="moveMap($event)"
+                            (mapMousemove)="move($event)">
+                            <map-marker
+                            *ngFor="let marker of markers"
+                                [position]="marker.position"
+                                [label]="marker.label"
+                                [title]="marker.title"
+                                [options]="marker.options"
+                            ></map-marker>
+                            
+                </google-map>
+            </mat-card>
+        </div>
+
+
+    </div>
+</div>

@@ -1,0 +1,54 @@
+.mat-toolbar{
+    margin : -24px;
+    width: auto;
+    margin-bottom: 10px;
+}
+
+mat-form-field{
+    padding : 5px;
+}
+
+mat-hint{
+    color : red;
+}
+
+.menuColor{
+    color: #3F51B5;
+    background-color: transparent;
+    width: max-content;
+}
+
+.buttonColor{
+    background-color: #3F51B5;
+}
+
+.align{
+    align-items: center;
+    margin-left: 30px;
+    margin-top: 30px;
+    text-decoration: underline;
+}
+
+.close{
+    background-color: transparent;
+    float: inline-end;
+}
+
+.white{
+    color : white;
+}
+
+.form-field {
+    display: flex;
+    align-items: center;
+}
+
+.add-button{
+    margin-right: 20px;
+    justify-content: end;
+    align-items: center;
+    display: flex;
+}
+
+
+

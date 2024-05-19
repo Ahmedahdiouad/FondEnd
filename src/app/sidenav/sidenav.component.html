@@ -6,7 +6,7 @@
     <mat-divider></mat-divider>
     <div class="container">
         <a mat-list-item class="list-item" routerLink="home" routerLinkActive="active">
-            <mat-icon>home</mat-icon>
+            <mat-icon>home</mat-icon> <!-- il faut creer un nouveau component -->
             <span class="text">Home</span>
         </a>
     </div>
@@ -19,8 +19,6 @@
             <span class="text">Sensors</span>
         </a>
     </div>
-
-    
 
     <mat-divider></mat-divider>
     
@@ -37,6 +35,15 @@
         <a mat-list-item class="list-item" routerLink="maintenance" routerLinkActive="active">
             <mat-icon>calendar_today</mat-icon>
             <span class="text">Maintenance</span>
+        </a>
+    </div>
+
+    <mat-divider></mat-divider>
+    
+    <div class="container">
+        <a mat-list-item class="list-item" routerLink="shipping" routerLinkActive="active">
+            <mat-icon>location_on</mat-icon>
+            <span class="text">Shipping</span>
         </a>
     </div>
 
